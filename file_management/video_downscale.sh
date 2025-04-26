@@ -3,7 +3,7 @@ OIFS="$IFS"
 IFS=$'\n'
 echo "Scanning directory..."
 for vid in *; do
-	if [[ "${vid}" == *.mov || "${vid}" == *.m4v || "${vid}" == *.mp4 ]]; then
+	if [[ "${vid}" == *.mov || "${vid}" == *.m4v || "${vid}" == *.mp4 || "${vid}" == *.mkv ]]; then
 		size=$(ffprobe -v error -select_streams v:0 -show_entries stream=height,width -of csv=s=x:p=0 "$vid")
 		echo "$vid - $size"
 		waste_left="${size%%x*}"
