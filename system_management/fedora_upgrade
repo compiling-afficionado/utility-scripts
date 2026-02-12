@@ -1,0 +1,11 @@
+# Ensure current Fedora packages list is updated and prepped for upgrade REMEMBER TO REBOOT
+sudo dnf upgrade --refresh
+
+# Reboot after the above IT IS NECESSARY
+sudo reboot now
+
+# Download updated packages
+sudo dnf system-upgrade download --releasever=$(cat /etc/*-release | awk -F= '/VERSION_ID/{print $2+1}')
+
+# Launch the upgrade (multiple reboots normal)
+sudo dnf5 offline reboot
